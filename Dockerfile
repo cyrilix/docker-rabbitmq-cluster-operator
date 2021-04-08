@@ -1,7 +1,7 @@
 FROM --platform=$BUILDPLATFORM golang:1.15-alpine AS builder-src
 
 ARG BUILDPLATFORM
-ARG version="v1.4.0"
+ARG version="v1.6.0"
 
 RUN apk add -U git
 
@@ -26,7 +26,8 @@ ARG BUILDPLATFORM
 RUN GOOS=$(echo $TARGETPLATFORM | cut -f1 -d/) && \
     GOARCH=$(echo $TARGETPLATFORM | cut -f2 -d/) && \
     GOARM=$(echo $TARGETPLATFORM | cut -f3 -d/ | sed "s/v//" ) && \
-    CGO_ENABLED=0 GOOS=${GOOS} GOARCH=${GOARCH} GOARM=${GOARM} go build -v -a -tags timetzdata -o manager main.go
+    CGO_ENABLED=0 GOOS=${GOOS} GOARCH=${GOARCH} GOARM=${GOARM} go build -v -a -o manager main.go
+    #CGO_ENABLED=0 GOOS=${GOOS} GOARCH=${GOARCH} GOARM=${GOARM} go build -v -a -tags timetzdata -o manager main.go
 
 
 # ---------------------------------------
