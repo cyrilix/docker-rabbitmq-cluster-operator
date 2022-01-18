@@ -1,7 +1,7 @@
-FROM --platform=$BUILDPLATFORM golang:1.16-alpine AS builder-src
+FROM --platform=$BUILDPLATFORM docker.io/golang:1.16-alpine AS builder-src
 
 ARG BUILDPLATFORM
-ARG version="v1.8.1"
+ARG version="v1.10.0"
 
 RUN apk add -U git
 
@@ -31,7 +31,7 @@ RUN GOOS=$(echo $TARGETPLATFORM | cut -f1 -d/) && \
 
 
 # ---------------------------------------
-FROM alpine:latest as etc-builder
+FROM docker.io/alpine:latest as etc-builder
 
 RUN echo "rabbitmq-cluster-operator:x:1000:" > /etc/group && \
     echo "rabbitmq-cluster-operator:x:1000:1000::/home/rabbitmq-cluster-operator:/usr/sbin/nologin" > /etc/passwd
