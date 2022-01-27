@@ -1,7 +1,7 @@
 FROM --platform=$BUILDPLATFORM docker.io/golang:1.16-alpine AS builder-src
 
 ARG BUILDPLATFORM
-ARG version="v1.10.0"
+ARG version="v1.11.0"
 
 RUN apk add -U git
 
