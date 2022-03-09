@@ -1,6 +1,6 @@
 #! /bin/bash
 
-VERSION=1.11.1
+VERSION=1.12.0
 IMAGE_SRC_NAME=cluster-operator-src
 IMAGE_BUILDER_NAME=cluster-operator-builder
 IMAGE_ETC_BUILDER_NAME=cluster-operator-etc-builder
