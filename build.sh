@@ -136,4 +136,4 @@ build_builder_image
 build_etc_builder
 build_image
 
-buildah push --rm --all -f v2s2 localhost/${MANIFEST_NAME}:${VERSION} docker://docker.io/cyrilix/${MANIFEST_NAME}:${VERSION}
+buildah manifest push --rm --all -f v2s2 localhost/${MANIFEST_NAME}:${VERSION} docker://docker.io/cyrilix/${MANIFEST_NAME}:${VERSION}
