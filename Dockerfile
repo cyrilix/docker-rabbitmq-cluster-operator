@@ -1,7 +1,7 @@
-FROM --platform=$BUILDPLATFORM docker.io/golang:1.16-alpine AS builder-src
+FROM --platform=$BUILDPLATFORM docker.io/golang:1.20-alpine AS builder-src
 
 ARG BUILDPLATFORM
-ARG version="v1.13.1"
+ARG version="2.3.0"
 
 RUN apk add -U git
 
@@ -26,7 +26,7 @@ ARG BUILDPLATFORM
 RUN GOOS=$(echo $TARGETPLATFORM | cut -f1 -d/) && \
     GOARCH=$(echo $TARGETPLATFORM | cut -f2 -d/) && \
     GOARM=$(echo $TARGETPLATFORM | cut -f3 -d/ | sed "s/v//" ) && \
-    CGO_ENABLED=0 GOOS=${GOOS} GOARCH=${GOARCH} GOARM=${GOARM} go build -v -a -o manager main.go
+    CGO_ENABLED=0 GOOS=${GOOS} GOARCH=${GOARCH} GOARM=${GOARM} go build -v -a -tags  -o manager main.go
     #CGO_ENABLED=0 GOOS=${GOOS} GOARCH=${GOARCH} GOARM=${GOARM} go build -v -a -tags timetzdata -o manager main.go
 
 
