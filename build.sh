@@ -1,6 +1,6 @@
 #! /bin/bash
 
-VERSION=1.13.1
+VERSION=2.4.0
 IMAGE_SRC_NAME=cluster-operator-src
 IMAGE_BUILDER_NAME=cluster-operator-builder
 IMAGE_ETC_BUILDER_NAME=cluster-operator-etc-builder
@@ -22,7 +22,7 @@ build_src_image() {
 
   local containerSrcName=rabbitmq-cluster-src
 
-  buildah --name "$containerSrcName" from docker.io/golang:1.18-alpine
+  buildah --name "$containerSrcName" from docker.io/golang:1.20-alpine
 
   buildah run "$containerSrcName" apk add -U git
 
